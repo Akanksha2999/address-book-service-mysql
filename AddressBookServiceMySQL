@@ -154,3 +154,26 @@ mysql> SELECT COUNT(city) and COUNT(state) FROM address_book;
 |                            1 |
 +------------------------------+
 1 row in set (0.00 sec)
+
+--------------------------------------------------------------------------
+UC8 -> Retrieve contact sorted alphabetically of table of address book service database
+--------------------------------------------------------------------------
+mysql> SELECT * FROM address_book;
++-----------+----------+-----------+-------------+-------------+-------+--------------+------------------+
+| firstName | lastName | address   | city        | state       | zip   | phone_Number | email_Id         |
++-----------+----------+-----------+-------------+-------------+-------+--------------+------------------+
+| Mahima    | Thakur   | Nerul     | Navi Mumbai | Maharashtra |  1234 |     65432789 | mahima@gmail.com |
+| Ved       | Bhoir    | Vashi     | Mumbai      | Maharashtra |  9876 |     12345678 | ved@gmail.com    |
+| Neha      | Jadhav   | Ghatkopar | Mumbai      | Maharashtra | 45678 |     98765432 | neha@gmail.com   |
++-----------+----------+-----------+-------------+-------------+-------+--------------+------------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM address_book ORDER BY firstName;
++-----------+----------+-----------+-------------+-------------+-------+--------------+------------------+
+| firstName | lastName | address   | city        | state       | zip   | phone_Number | email_Id         |
++-----------+----------+-----------+-------------+-------------+-------+--------------+------------------+
+| Mahima    | Thakur   | Nerul     | Navi Mumbai | Maharashtra |  1234 |     65432789 | mahima@gmail.com |
+| Neha      | Jadhav   | Ghatkopar | Mumbai      | Maharashtra | 45678 |     98765432 | neha@gmail.com   |
+| Ved       | Bhoir    | Vashi     | Mumbai      | Maharashtra |  9876 |     12345678 | ved@gmail.com    |
++-----------+----------+-----------+-------------+-------------+-------+--------------+------------------+
+3 rows in set (0.00 sec)
