@@ -99,3 +99,23 @@ mysql> SELECT * FROM address_book;
 | Ved       | Bhoir    | Vashi   | Mumbai      | Maharashtra | 9876 |     12345678 | ved@gmail.com    |
 +-----------+----------+---------+-------------+-------------+------+--------------+------------------+
 2 rows in set (0.00 sec)
+
+--------------------------------------------------------------------------
+UC6 -> Retrieve contact using city or state from a table of address book service database
+--------------------------------------------------------------------------
+mysql> SELECT * FROM address_book WHERE city = 'Mumbai';
++-----------+----------+---------+--------+-------------+------+--------------+---------------+
+| firstName | lastName | address | city   | state       | zip  | phone_Number | email_Id      |
++-----------+----------+---------+--------+-------------+------+--------------+---------------+
+| Ved       | Bhoir    | Vashi   | Mumbai | Maharashtra | 9876 |     12345678 | ved@gmail.com |
++-----------+----------+---------+--------+-------------+------+--------------+---------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM address_book WHERE city = 'Mumbai' or state = 'Maharashtra';
++-----------+----------+---------+-------------+-------------+------+--------------+------------------+
+| firstName | lastName | address | city        | state       | zip  | phone_Number | email_Id         |
++-----------+----------+---------+-------------+-------------+------+--------------+------------------+
+| Mahima    | Thakur   | Nerul   | Navi Mumbai | Maharashtra | 1234 |     65432789 | mahima@gmail.com |
+| Ved       | Bhoir    | Vashi   | Mumbai      | Maharashtra | 9876 |     12345678 | ved@gmail.com    |
++-----------+----------+---------+-------------+-------------+------+--------------+------------------+
+2 rows in set (0.00 sec)
