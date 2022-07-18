@@ -285,3 +285,26 @@ mysql>  SELECT COUNT(contactType) FROM address_book WHERE contactType='Professio
 |                  1 |
 +--------------------+
 1 row in set (0.00 sec)
+
+--------------------------------------------------------------------------
+UC11 ->  Ability to add person to both Friend and Family
+--------------------------------------------------------------------------
+mysql> INSERT INTO address_book(firstName,lastName,address,city,state,zip,phone_number,email_Id,bookName,contactType)VALUES
+    -> ('Akanksha','Jadhav','Ghatkopar','Mumbai','Maharashtra',09878,65432178,'akanksha@gmail.com','Bridgelabz','Friend');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO address_book(firstName,lastName,address,city,state,zip,phone_number,email_Id,bookName,contactType)VALUES
+    -> ('Shruti','Jadhav','Ghansoli',' Navi Mumbai','Maharashtra',4567,198234509,'Shruti@gmail.com','Hike','Family');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> SELECT * FROM address_book;
++-----------+----------+-----------+--------------+-------------+-------+--------------+--------------------+------------+--------------+
+| firstName | lastName | address   | city         | state       | zip   | phone_Number | email_Id           | bookName   | contactType  |
++-----------+----------+-----------+--------------+-------------+-------+--------------+--------------------+------------+--------------+
+| Mahima    | Thakur   | Nerul     | Navi Mumbai  | Maharashtra |  1234 |     65432789 | mahima@gmail.com   | Bridgelabz | Professional |
+| Ved       | Bhoir    | Vashi     | Mumbai       | Maharashtra |  9876 |     12345678 | ved@gmail.com      | Hike       | Family       |
+| Neha      | Jadhav   | Ghatkopar | Mumbai       | Maharashtra | 45678 |     98765432 | neha@gmail.com     | Sigce      | Friend       |
+| Akanksha  | Jadhav   | Ghatkopar | Mumbai       | Maharashtra |  9878 |     65432178 | akanksha@gmail.com | Bridgelabz | Friend       |
+| Shruti    | Jadhav   | Ghansoli  |  Navi Mumbai | Maharashtra |  4567 |    198234509 | Shruti@gmail.com   | Hike       | Family       |
++-----------+----------+-----------+--------------+-------------+-------+--------------+--------------------+------------+--------------+
+5 rows in set (0.00 sec)
