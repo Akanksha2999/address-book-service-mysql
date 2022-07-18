@@ -177,3 +177,83 @@ mysql> SELECT * FROM address_book ORDER BY firstName;
 | Ved       | Bhoir    | Vashi     | Mumbai      | Maharashtra |  9876 |     12345678 | ved@gmail.com    |
 +-----------+----------+-----------+-------------+-------------+-------+--------------+------------------+
 3 rows in set (0.00 sec)
+
+mysql> SELECT firstName,city FROM address_book ORDER BY city;
++-----------+-------------+
+| firstName | city        |
++-----------+-------------+
+| Ved       | Mumbai      |
+| Neha      | Mumbai      |
+| Mahima    | Navi Mumbai |
++-----------+-------------+
+3 rows in set (0.00 sec)
+
+--------------------------------------------------------------------------
+UC9 -> Alter address book to add name and type
+--------------------------------------------------------------------------
+mysql> ALTER TABLE address_book ADD bookName VARCHAR(20) NOT NULL ,ADD conatctType VARCHAR(30) NOT NULL;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM address_book;
++-----------+----------+-----------+-------------+-------------+-------+--------------+------------------+----------+-------------+
+| firstName | lastName | address   | city        | state       | zip   | phone_Number | email_Id         | bookName | conatctType |
++-----------+----------+-----------+-------------+-------------+-------+--------------+------------------+----------+-------------+
+| Mahima    | Thakur   | Nerul     | Navi Mumbai | Maharashtra |  1234 |     65432789 | mahima@gmail.com |          |             |
+| Ved       | Bhoir    | Vashi     | Mumbai      | Maharashtra |  9876 |     12345678 | ved@gmail.com    |          |             |
+| Neha      | Jadhav   | Ghatkopar | Mumbai      | Maharashtra | 45678 |     98765432 | neha@gmail.com   |          |             |
++-----------+----------+-----------+-------------+-------------+-------+--------------+------------------+----------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> DESCRIBE address_book;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| firstName    | varchar(20)  | NO   |     | NULL    |       |
+| lastName     | varchar(20)  | NO   |     | NULL    |       |
+| address      | varchar(150) | NO   |     | NULL    |       |
+| city         | varchar(20)  | NO   |     | NULL    |       |
+| state        | varchar(20)  | NO   |     | NULL    |       |
+| zip          | int          | NO   |     | NULL    |       |
+| phone_Number | int          | NO   |     | NULL    |       |
+| email_Id     | varchar(30)  | NO   |     | NULL    |       |
+| bookName     | varchar(20)  | NO   |     | NULL    |       |
+| conatctType  | varchar(30)  | NO   |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql> ALTER TABLE address_book CHANGE conatctType contactType VARCHAR(30);
+Query OK, 0 rows affected (0.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM address_book;
++-----------+----------+-----------+-------------+-------------+-------+--------------+------------------+----------+-------------+
+| firstName | lastName | address   | city        | state       | zip   | phone_Number | email_Id         | bookName | contactType |
++-----------+----------+-----------+-------------+-------------+-------+--------------+------------------+----------+-------------+
+| Mahima    | Thakur   | Nerul     | Navi Mumbai | Maharashtra |  1234 |     65432789 | mahima@gmail.com |          |             |
+| Ved       | Bhoir    | Vashi     | Mumbai      | Maharashtra |  9876 |     12345678 | ved@gmail.com    |          |             |
+| Neha      | Jadhav   | Ghatkopar | Mumbai      | Maharashtra | 45678 |     98765432 | neha@gmail.com   |          |             |
++-----------+----------+-----------+-------------+-------------+-------+--------------+------------------+----------+-------------+
+3 rows in set (0.00 sec)
+
+mysql>  UPDATE address_book SET bookName = 'Bridgelabz',contactType = 'Professional' WHERE firstName = 'Mahima';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE address_book SET bookName = 'Hike',contactType = 'Family' WHERE firstName = 'Ved';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE address_book SET bookName = 'Sigce',contactType = 'Friend' WHERE firstName = 'Neha';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM address_book;
++-----------+----------+-----------+-------------+-------------+-------+--------------+------------------+------------+--------------+
+| firstName | lastName | address   | city        | state       | zip   | phone_Number | email_Id         | bookName   | contactType  |
++-----------+----------+-----------+-------------+-------------+-------+--------------+------------------+------------+--------------+
+| Mahima    | Thakur   | Nerul     | Navi Mumbai | Maharashtra |  1234 |     65432789 | mahima@gmail.com | Bridgelabz | Professional |
+| Ved       | Bhoir    | Vashi     | Mumbai      | Maharashtra |  9876 |     12345678 | ved@gmail.com    | Hike       | Family       |
+| Neha      | Jadhav   | Ghatkopar | Mumbai      | Maharashtra | 45678 |     98765432 | neha@gmail.com   | Sigce      | Friend       |
++-----------+----------+-----------+-------------+-------------+-------+--------------+------------------+------------+--------------+
+3 rows in set (0.00 sec)
